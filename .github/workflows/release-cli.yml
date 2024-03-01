@@ -3,7 +3,7 @@ name: Release cli
 on:
   push:
     tags:
-      - 'cli/*'
+      - 'cli@*'
 
 jobs:
   release-cli:
