@@ -1,9 +1,15 @@
 {
   "name": "test-actions",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "echo released"
+  },
+  "packageManager": "pnpm@8.6.10",
+  "engines": {
+    "node": ">=16.0.0",
+    "pnpm": ">=8.0.0"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1"
