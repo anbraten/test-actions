@@ -1,0 +1,13 @@
+name: Release cli
+
+on:
+  push:
+    tags:
+      - 'cli/*'
+
+jobs:
+  release-cli:
+    name: Release cli
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "cli released"

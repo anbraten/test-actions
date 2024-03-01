@@ -1,0 +1,11 @@
+{
+  "name": "test-actions",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "echo released"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.27.1"
+  }
+}
