@@ -21,8 +21,8 @@ jobs:
           submodules: true
           token: ${{ secrets.PAT }}
       - run: |
-          # git config user.name github-actions[bot]
-          # git config user.email github-actions[bot]@users.noreply.github.com
+          git config user.name anbraten
+          git config user.email 6918444+anbraten@users.noreply.github.com
           echo "machine github.com\nlogin github-actions[bot]\npassword ${{secrets.PAT}}" > ~/.netrc
           git tag -a "cli/1.0.0" -m "cli/1.0.0"
           git push origin --tags
