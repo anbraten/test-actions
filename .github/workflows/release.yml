@@ -24,7 +24,7 @@ jobs:
           git config user.name anbraten
           git config user.email 6918444+anbraten@users.noreply.github.com
           echo "machine github.com\nlogin anbraten\npassword ${{secrets.PAT}}" > ~/.netrc
-          git tag -a "cli/1.0.2" -m "cli/1.0.2"
+          git tag -a "cli@1.0.2" -m "cli@1.0.2"
           git push origin --tags
       # - uses: actions/github-script@v7
       #   with:
