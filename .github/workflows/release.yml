@@ -20,9 +20,29 @@ jobs:
         with:
           submodules: true
           token: ${{ secrets.PAT }}
-      - run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          echo "machine github.com\nlogin github-actions[bot]\npassword ${{secrets.PAT}}" > ~/.netrc
-          git tag -a "cli@1.0.4" -m "cli@1.0.4"
-          git push origin --tags
+      - uses: pnpm/action-setup@v2.2.4
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Create release
+        uses: changesets/action@v1
+        with:
+          commit: 'ci: release'
+          title: 'ci: release'
+          publish: pnpm release
+        env:
+          # secrets.GITHUB_TOKEN doesn't trigger workflow on automated release
+          # https://github.com/orgs/community/discussions/26875
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
+      # - run: |
+      #     git config user.name github-actions[bot]
+      #     git config user.email github-actions[bot]@users.noreply.github.com
+      #     echo "machine github.com\nlogin github-actions[bot]\npassword ${{secrets.PAT}}" > ~/.netrc
+      #     git tag -a "cli@1.0.4" -m "cli@1.0.4"
+      #     git push origin --tags
